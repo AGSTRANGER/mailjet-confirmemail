@@ -12,13 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Endpoint for subscribing a user
 app.post("/subscribe", async (req, res) => {
   try {
-    console.log("🚀 ~ file: server.js:12 ~ app.post ~ req.body:", req.body);
-
     const { email, firstName, lastName } = req.body;
 
-    console.log("🚀 ~ file: server.js:12 ~ app.post ~ email:", email);
-    console.log("🚀 ~ file: server.js:12 ~ app.post ~ lastName:", lastName);
-    console.log("🚀 ~ file: server.js:12 ~ app.post ~ firstName:", firstName);
     // Call subscribeUser from services
     await services.subscribeUser(email, firstName, lastName);
 

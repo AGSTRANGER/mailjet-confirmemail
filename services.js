@@ -1,9 +1,15 @@
 const axios = require("axios");
 const helpers = require("./helpers");
 
+require("dotenv").config();
+
+// Mailjet API credentials
+const { MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE } = process.env;
+
 // Mailjet list ID
-// #TODO: Get list id
-const LIST_ID = "your_list_id";
+
+const { LIST_ID } = process.env;
+console.log("🚀 ~ file: services.js:12 ~ LIST_ID:", LIST_ID);
 
 // Step 1: Contact's subscription
 const subscribeUser = async (email, firstName, lastName) => {
@@ -16,7 +22,7 @@ const subscribeUser = async (email, firstName, lastName) => {
       : "http://localhost:3000";
 
   // Create the confirmation link using the base URL
-  const confirmationLink = `${baseUrl}/confirm?EmailOfTheUser=${email}&MD5hash=${MD5hash}`;
+  const confirmationLink = `${baseUrl}/confirm?email=${email}&md5hash=${MD5hash}`;
 
   // Step 3: Sending of the confirmation email
   await helpers.sendConfirmationEmail(

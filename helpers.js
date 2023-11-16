@@ -3,10 +3,7 @@ const axios = require("axios");
 require("dotenv").config();
 
 // Mailjet API credentials
-//
 const { MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE } = process.env;
-console.log("🚀 ~ file: helpers.js:7 ~ MJ_APIKEY_PRIVATE:", MJ_APIKEY_PRIVATE);
-console.log("🚀 ~ file: helpers.js:7 ~ MJ_APIKEY_PUBLIC:", MJ_APIKEY_PUBLIC);
 
 // Function to generate MD5 hash
 const generateMD5Hash = (data) => {
