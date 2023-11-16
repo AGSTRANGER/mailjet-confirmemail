@@ -1,0 +1,66 @@
+# Node.js
+node_modules/
+
+# Dependency directories
+/*/node_modules/
+# Optional npm cache directory
+.npm/
+
+# Environment files
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Production build folder
+build/
+
+# Dependency directories
+.lib/
+dist/
+
+# dotenv environment variable file
+.env
+.env.local
+.env.*.local
+
+# dotenv backup files
+.env.backup
+.env.local.backup
+.env.development.backup
+.env.test.backup
+.env.production.backup
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# dotenv environment variables file
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Visual Studio Code directory
+.vscode/
