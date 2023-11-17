@@ -9,7 +9,6 @@ const { MJ_APIKEY_PUBLIC, MJ_APIKEY_PRIVATE } = process.env;
 // Mailjet list ID
 
 const { LIST_ID } = process.env;
-console.log("🚀 ~ file: services.js:12 ~ LIST_ID:", LIST_ID);
 
 // Step 1: Contact's subscription
 const subscribeUser = async (email, firstName, lastName) => {
@@ -39,16 +38,20 @@ const subscribeUser = async (email, firstName, lastName) => {
 };
 // Step 5: Adding and sync of the contact
 const addContactToList = async (email, md5hash) => {
+  console.log(
+    "🚀 ~ file: services.js:41 ~ addContactToList ~ md5hash:",
+    md5hash
+  );
   const response = await axios.post(
     `https://api.mailjet.com/v3/REST/contactslist/${LIST_ID}/managecontact`,
     {
       Email: email,
-      Name: "Recipient Name",
+      // Name: "Recipient Name",
       Action: "addnoforce",
-      Properties: {
-        MD5hash: md5hash,
-        // Add other properties as needed
-      },
+      // Properties: {
+      //   // MD5hash: md5hash,
+      //   // Add other properties as needed
+      // },
     },
     {
       auth: {
