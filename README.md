@@ -2,6 +2,21 @@
 
 This project implements a double opt-in email subscription system using the Mailjet API. Users can subscribe to a mailing list, and their confirmation is ensured through a customized confirmation link and MD5 checksum verification.
 
+1. [Getting Started](#getting-started)
+   1. [Prerequisites](#prerequisites)
+   2. [Installation](#installation)
+2. [How it Works](#how-it-works)
+   1. [`subscribeUser`](#subscribeuser)
+   2. [`addContactToList`](#addcontacttolist)
+3. [Hashing Process Overview](#hashing-process-overview)
+4. [Security through Hashing and Checksum](#security-through-hashing-and-checksum)
+   1. [Usage](#usage)
+5. [Structure](#structure)
+   1. [Environment Variables](#environment-variables)
+   2. [Security through Hashing and Checksum](#security-through-hashing-and-checksum-1)
+   3. [Potential Improvement: Enhanced Security with a Secret Key](#potential-improvement-enhanced-security-with-a-secret-key)
+6. [License](#license)
+
 ## Getting Started
 
 ### Prerequisites
