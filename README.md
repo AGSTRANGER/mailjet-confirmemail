@@ -172,6 +172,11 @@ In summary, the use of MD5 hashing and checksums in the Ummanite Email Subscript
 
 [^1^]: _For a more detailed explanation of the security benefits, refer to the [Security through Hashing and Checksum](#security-through-hashing-and-checksum) section._
 
+**Security Measures:**
+
+- **Secure Hashing Process:**
+  - The `generateMD5Hash` function responsible for hashing is kept secure within the server-side code and is not exposed to external entities. This ensures that only legitimate users with proper access can generate valid MD5 hashes.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
