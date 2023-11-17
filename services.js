@@ -36,8 +36,17 @@ const subscribeUser = async (email, firstName, lastName) => {
     "Confirmation email sent. Please check your inbox and click the confirmation link."
   );
 };
+// console.log("🚀 ~ file: services.js:43 ~ addContactToList ~ helpers:", helpers);
+
 // Step 5: Adding and sync of the contact
 const addContactToList = async (email, md5hash) => {
+  // Verify MD5 checksum
+
+  const isChecksumValid = helpers.verifyMD5Checksum(email, md5hash);
+
+  if (!isChecksumValid) {
+    throw new Error("MD5 checksum verification failed.");
+  }
   console.log(
     "🚀 ~ file: services.js:41 ~ addContactToList ~ md5hash:",
     md5hash
@@ -48,6 +57,7 @@ const addContactToList = async (email, md5hash) => {
       Email: email,
       // Name: "Recipient Name",
       Action: "addnoforce",
+      // This doesn't seem to be needed.
       // Properties: {
       //   // MD5hash: md5hash,
       //   // Add other properties as needed

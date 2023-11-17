@@ -54,5 +54,10 @@ const sendConfirmationEmail = async (
   console.log("Confirmation email sent:", response.data);
 };
 
+const verifyMD5Checksum = (email, md5hash) => {
+  const calculatedMD5 = generateMD5Hash(email);
+  return calculatedMD5 === md5hash;
+};
 exports.generateMD5Hash = generateMD5Hash;
 exports.sendConfirmationEmail = sendConfirmationEmail;
+exports.verifyMD5Checksum = verifyMD5Checksum;
