@@ -130,6 +130,48 @@ In summary, the use of MD5 hashing and checksums in the Ummanite Email Subscript
 - `MJ_APIKEY_PRIVATE`: Mailjet private API key.
 - `LIST_ID`: Mailjet mailing list ID.
 
+## Security through Hashing and Checksum
+
+The use of MD5 hashing and checksums in the subscription process enhances security in several ways[^1^]:
+
+**Scenario: Man-in-the-Middle Attack**
+
+Suppose a malicious actor intercepts the confirmation link sent to a user during the subscription process. Without proper security measures, the actor could tamper with the link or attempt to reuse it to falsely confirm a subscription.
+
+**Without Hashing and Checksums:**
+
+1. **Interception:**
+
+   - The malicious actor intercepts the confirmation link sent to User A: [http://ummanite.com/confirm?email=user@example.com&md5hash=abcdef123456](http://ummanite.com/confirm?email=user@example.com&md5hash=abcdef123456).
+
+2. **Tampering:**
+
+   - The actor alters the confirmation link to target User B: [http://ummanite.com/confirm?email=userB@example.com&md5hash=abcdef123456](http://ummanite.com/confirm?email=userB@example.com&md5hash=abcdef123456).
+
+3. **Unauthorized Confirmation:**
+   - If the system relies solely on the email parameter for confirmation, User B's email is erroneously confirmed without their knowledge.
+
+**With Hashing and Checksums:**
+
+1. **Interception:**
+
+   - The malicious actor intercepts the confirmation link sent to User A: [http://ummanite.com/confirm?email=user@example.com&md5hash=abcdef123456](http://ummanite.com/confirm?email=user@example.com&md5hash=abcdef123456).
+
+2. **Tampering:**
+
+   - The actor alters the confirmation link to target User B: [http://ummanite.com/confirm?email=userB@example.com&md5hash=abcdef123456](http://ummanite.com/confirm?email=userB@example.com&md5hash=abcdef123456).
+
+3. **Checksum Verification:**
+
+   - During the confirmation process, the system recalculates the MD5 hash for the email provided in the link (`userB@example.com`). It then compares this calculated hash to the MD5 checksum (`abcdef123456`) received in the link.
+
+4. **Security Check:**
+   - Since the recalculated hash for `userB@example.com` won't match the MD5 checksum (`abcdef123456`), the system detects the tampering and denies the confirmation.
+
+In summary, the use of MD5 hashing and checksums in the Ummanite Email Subscription system adds a robust layer of security by maintaining data integrity, creating secure confirmation links, and protecting against various types of attacks.
+
+[^1^]: _For a more detailed explanation of the security benefits, refer to the [Security through Hashing and Checksum](#security-through-hashing-and-checksum) section._
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
